@@ -2,8 +2,8 @@ export default `
 
 type Trainer {
     id: String!
-    userId: String!
-    QMSId: String!
+    trainerId: String!
+    QMSProcedureId: String!
 }
 
 type Query {

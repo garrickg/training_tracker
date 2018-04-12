@@ -6,7 +6,7 @@ type TrainingRecord {
     traineeId: String!
     trainingDate: String!
     trainingRevision: String!
-    QMSId: String!
+    QMSProcedureId: String!
 }
 
 type Query {

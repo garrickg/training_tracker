@@ -2,8 +2,8 @@ export default `
 
 type Reviewer {
     id: String!
-    userId: String!
-    QMSId: String!
+    reviewerId: String!
+    QMSProcedureId: String!
 }
 
 type Query {

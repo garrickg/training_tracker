@@ -3,7 +3,7 @@ export default `
 type TrainingRequirement {
     id: String!
     traineeId: String!
-    QMSId: String!
+    QMSProcedureId: String!
 }
 
 type Query {
