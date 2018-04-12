@@ -9,6 +9,21 @@ export default (sequelize, DataTypes) => {
     },
   );
 
+  Author.associate = (models) => {
+    Author.belongsTo(models.User, {
+      foreignKey: {
+        name: 'authorId',
+        field: 'author_id',
+      },
+    });
+    Author.belongsTo(models.QMSProcedure, {
+      foreignKey: {
+        name: 'QMSProcedureId',
+        field: 'qms_procedure_id',
+      },
+    });
+  };
+
   return Author;
 };
 

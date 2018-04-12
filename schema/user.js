@@ -12,4 +12,8 @@ type Query {
     allUsers: [User!]!
 }
 
+type Mutation {
+    addUser (id: String!, username: String!, email: String!, password: String!): Boolean!
+}
+
 `;

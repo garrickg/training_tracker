@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const TrainingRequirement = sequelize.define(
-    'trainingRequirement',
+    'training_requirement',
     {
       id: {
         type: DataTypes.STRING,
@@ -8,6 +8,21 @@ export default (sequelize, DataTypes) => {
       },
     },
   );
+
+  TrainingRequirement.associate = (models) => {
+    TrainingRequirement.belongsTo(models.QMSProcedure, {
+      foreignKey: {
+        name: 'QMSProcedureId',
+        field: 'qms_procedure_id',
+      },
+    });
+    TrainingRequirement.belongsTo(models.User, {
+      foreignKey: {
+        name: 'traineeId',
+        field: 'trainee_id',
+      },
+    });
+  };
 
   return TrainingRequirement;
 };
