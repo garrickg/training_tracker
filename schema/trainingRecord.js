@@ -2,11 +2,11 @@ export default `
 
 type TrainingRecord {
     id: String!
-    trainerId: String!
-    traineeId: String!
+    trainer: User!
+    trainee: User!
     date: String!
     revision: String!
-    QMSProcedureId: String!
+    QMSProcedure: QMSProcedure!
 }
 
 `;
