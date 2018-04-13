@@ -6,11 +6,11 @@ type User {
     email: String!
     admin: Boolean!
     active: Boolean!
-    trainingRecords: [TrainingRecord!]
-    trainingRequirements: [TrainingRequirement!]
-    author: [QMSProcedure!]
-    trainer: [QMSProcedure!]
-    reviewer: [QMSProcedure!]
+    trainingRecords: [TrainingRecord!]!
+    trainingRequirements: [TrainingRequirement!]!
+    author: [QMSProcedure!]!
+    trainer: [QMSProcedure!]!
+    reviewer: [QMSProcedure!]!
 }
 
 type Query {

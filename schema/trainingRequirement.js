@@ -6,4 +6,8 @@ type TrainingRequirement {
     QMSProcedure: QMSProcedure!
 }
 
+type Query {
+    getTrainingRequirements (userId: String!): [TrainingRequirement!]!
+}
+
 `;

@@ -3,22 +3,8 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   User: {
-    trainingRecords: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from qms_procedures as q join training_records as t on t.qms_procedure_id = q.id where t.user_id = ?',
-      {
-        replacements: [user.id],
-        model: models.TrainingRecord,
-        raw: true,
-      },
-    ),
-    trainingRequirements: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from qms_procedures as q join training_requirements as t on t.qms_procedure_id = q.id where t.user_id = ?',
-      {
-        replacements: [user.id],
-        model: models.TrainingRequirement,
-        raw: true,
-      },
-    ),
+    trainingRecords: ({ id }, args, { models, user }) => models.TrainingRecord.findAll({where:{trainee_id: id}}),
+    trainingRequirements: ({ id }, args, { models, user }) => models.TrainingRequirement.findAll({where:{user_id: id}}),
     author: (parent, args, { models, user }) => models.sequelize.query(
       'select * from qms_procedures as q join authors as a on a.qms_procedure_id = q.id where a.user_id = ?',
       {
