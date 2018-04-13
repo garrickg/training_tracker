@@ -6,23 +6,12 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
     },
   );
-
-  Author.associate = (models) => {
-    Author.belongsTo(models.User, {
-      foreignKey: {
-        name: 'authorId',
-        field: 'author_id',
-      },
-    });
-    Author.belongsTo(models.QMSProcedure, {
-      foreignKey: {
-        name: 'QMSProcedureId',
-        field: 'qms_procedure_id',
-      },
-    });
-  };
 
   return Author;
 };

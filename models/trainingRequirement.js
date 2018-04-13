@@ -9,21 +9,6 @@ export default (sequelize, DataTypes) => {
     },
   );
 
-  TrainingRequirement.associate = (models) => {
-    TrainingRequirement.belongsTo(models.QMSProcedure, {
-      foreignKey: {
-        name: 'QMSProcedureId',
-        field: 'qms_procedure_id',
-      },
-    });
-    TrainingRequirement.belongsTo(models.User, {
-      foreignKey: {
-        name: 'traineeId',
-        field: 'trainee_id',
-      },
-    });
-  };
-
   return TrainingRequirement;
 };
 

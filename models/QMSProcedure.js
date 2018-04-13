@@ -25,6 +25,30 @@ export default (sequelize, DataTypes) => {
     },
   );
 
+  QMSProcedure.associate = (models) => {
+    QMSProcedure.belongsToMany(models.User, {
+      through: models.Trainer,
+      foreignKey: {
+        name: 'QMSProcedureId',
+        field: 'qms_procedure_id',
+      },
+    });
+    QMSProcedure.belongsToMany(models.User, {
+      through: models.Author,
+      foreignKey: {
+        name: 'QMSProcedureId',
+        field: 'qms_procedure_id',
+      },
+    });
+    QMSProcedure.belongsToMany(models.User, {
+      through: models.Reviewer,
+      foreignKey: {
+        name: 'QMSProcedureId',
+        field: 'qms_procedure_id',
+      },
+    });
+  };
+
   return QMSProcedure;
 };
 

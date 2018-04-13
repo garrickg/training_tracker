@@ -6,23 +6,12 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
     },
   );
-
-  Trainer.associate = (models) => {
-    Trainer.belongsTo(models.User, {
-      foreignKey: {
-        name: 'trainerId',
-        field: 'trainer_id',
-      },
-    });
-    Trainer.belongsTo(models.QMSProcedure, {
-      foreignKey: {
-        name: 'QMSProcedureId',
-        field: 'qms_procedure_id',
-      },
-    });
-  };
 
   return Trainer;
 };

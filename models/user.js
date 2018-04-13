@@ -27,5 +27,29 @@ export default (sequelize, DataTypes) => {
     },
   );
 
+  User.associate = (models) => {
+    User.belongsToMany(models.QMSProcedure, {
+      through: models.Trainer,
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+    User.belongsToMany(models.QMSProcedure, {
+      through: models.Author,
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+    User.belongsToMany(models.QMSProcedure, {
+      through: models.Reviewer,
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+  };
+
   return User;
 };
