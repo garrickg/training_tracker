@@ -49,6 +49,27 @@ export default (sequelize, DataTypes) => {
         field: 'user_id',
       },
     });
+    User.belongsToMany(models.QMSProcedure, {
+      through: models.TrainingRequirement,
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+    User.belongsToMany(models.QMSProcedure, {
+      through: models.TrainingRecord,
+      foreignKey: {
+        name: 'traineeId',
+        field: 'trainee_id',
+      },
+    });
+    User.belongsToMany(models.QMSProcedure, {
+      through: models.TrainingRecord,
+      foreignKey: {
+        name: 'trainerId',
+        field: 'trainer_id',
+      },
+    });
   };
 
   return User;

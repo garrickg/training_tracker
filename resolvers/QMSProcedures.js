@@ -2,6 +2,32 @@ import shortid from 'shortid';
 import formatErrors from '../shared/formatErrors';
 
 export default {
+  QMSProcedure: {
+    trainer: ({ id }, args, { models }) => models.sequelize.query(
+      'select * from users as u join trainers as t on t.user_id = u.id where t.qms_procedure_id = ?',
+      {
+        replacements: [id],
+        model: models.User,
+        raw: true,
+      },
+    ),
+    author: ({ id }, args, { models }) => models.sequelize.query(
+      'select * from users as u join authors as a on a.user_id = u.id where a.qms_procedure_id = ?',
+      {
+        replacements: [id],
+        model: models.User,
+        raw: true,
+      },
+    ),
+    reviewer: ({ id }, args, { models }) => models.sequelize.query(
+      'select * from users as u join reviewers as r on r.user_id = u.id where r.qms_procedure_id = ?',
+      {
+        replacements: [id],
+        model: models.User,
+        raw: true,
+      },
+    ),
+  },
   Query: {
     allQMSProcedures: (parent, args, { models }) => models.QMSProcedure.findAll(),
   },

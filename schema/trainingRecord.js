@@ -4,13 +4,9 @@ type TrainingRecord {
     id: String!
     trainerId: String!
     traineeId: String!
-    trainingDate: String!
-    trainingRevision: String!
+    date: String!
+    revision: String!
     QMSProcedureId: String!
-}
-
-type Query {
-    allTrainingRecords: [TrainingRecord!]!
 }
 
 `;

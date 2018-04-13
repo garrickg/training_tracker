@@ -6,6 +6,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
+      obsolete: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
   );
 

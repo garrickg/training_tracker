@@ -12,6 +12,10 @@ export default (sequelize, DataTypes) => {
       revision: {
         type: DataTypes.STRING,
       },
+      obsolete: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
   );
 

@@ -7,6 +7,9 @@ type QMSProcedure {
     revision: String!
     effectiveDate: String!
     obsolete: Boolean!
+    trainer: [User!]!
+    author: [User!]!
+    reviewer: [User!]!
 }
 
 type Query {
