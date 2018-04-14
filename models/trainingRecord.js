@@ -9,9 +9,6 @@ export default (sequelize, DataTypes) => {
       date: {
         type: DataTypes.DATE,
       },
-      revision: {
-        type: DataTypes.STRING,
-      },
       obsolete: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

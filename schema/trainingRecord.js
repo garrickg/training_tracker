@@ -5,7 +5,6 @@ type TrainingRecord {
     trainer: User!
     trainee: User!
     date: String!
-    revision: String!
     QMSProcedure: QMSProcedure!
 }
 
@@ -16,7 +15,7 @@ type Query {
 }
 
 type Mutation {
-    bulkAddTrainingRecords (trainerId: String!, traineeIds: [String!]!, date: String!, revision: String!, QMSProcedureId: String!): Response!
+    bulkAddTrainingRecords (trainerId: String!, traineeIds: [String!]!, date: String!, QMSProcedureId: String!): Response!
 }
 
 `;

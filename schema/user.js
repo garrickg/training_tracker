@@ -21,7 +21,7 @@ type Query {
 type Mutation {
     addUser (username: String!, email: String!, password: String!): Response!
     addTrainingRequirement (userId: String!, QMSProcedureId: String!): Response!
-    addTrainingRecord (trainerId: String!, traineeId: String!, date: String!, revision: String!, QMSProcedureId: String!): Response!
+    addTrainingRecord (trainerId: String!, traineeId: String!, date: String!, QMSProcedureId: String!): Response!
 }
 
 `;

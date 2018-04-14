@@ -11,7 +11,7 @@ export default {
   },
   Query: {
     allUsers: (parent, args, { models }) => models.User.findAll({ order: [['username', 'ASC']] }),
-    user: (parent, { id }, { models }) => models.User.findOne({ where: { id } }),
+    user: (parent, { userId }, { models }) => models.User.findOne({ where: { id: userId } }),
   },
   Mutation: {
     addUser: async (parent, args, { models }) => {

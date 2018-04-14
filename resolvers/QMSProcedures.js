@@ -3,9 +3,9 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   QMSProcedure: {
-    trainer: ({ id }, args, { models }) => models.Trainer.findAll({ order: [['username', 'ASC']], where: { qms_procedure_id: id } }),
-    author: ({ id }, args, { models }) => models.Author.findAll({ order: [['username', 'ASC']], where: { qms_procedure_id: id } }),
-    reviewer: ({ id }, args, { models }) => models.Reviewer.findAll({ order: [['username', 'ASC']], where: { qms_procedure_id: id } }),
+    trainer: ({ id }, args, { models }) => models.Trainer.findAll({ where: { qms_procedure_id: id } }),
+    author: ({ id }, args, { models }) => models.Author.findAll({ where: { qms_procedure_id: id } }),
+    reviewer: ({ id }, args, { models }) => models.Reviewer.findAll({ where: { qms_procedure_id: id } }),
     trainingRecords: ({ id }, args, { models }) => models.TrainingRecord.findAll({ order: [['created_at', 'DESC']], where: { qms_procedure_id: id } }),
     trainingRequirements: ({ id }, args, { models }) => models.TrainingRequirements.findAll({ order: [['created_at', 'DESC']], where: { qms_procedure_id: id } }),
   },
