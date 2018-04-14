@@ -3,35 +3,15 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   User: {
-    trainingRecords: ({ id }, args, { models, user }) => models.TrainingRecord.findAll({where:{trainee_id: id}}),
-    trainingRequirements: ({ id }, args, { models, user }) => models.TrainingRequirement.findAll({where:{user_id: id}}),
-    author: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from qms_procedures as q join authors as a on a.qms_procedure_id = q.id where a.user_id = ?',
-      {
-        replacements: [user.id],
-        model: models.QMSProcedure,
-        raw: true,
-      },
-    ),
-    trainer: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from qms_procedures as q join trainers as t on t.qms_procedure_id = q.id where t.user_id = ?',
-      {
-        replacements: [user.id],
-        model: models.QMSProcedure,
-        raw: true,
-      },
-    ),
-    reviewer: (parent, args, { models, user }) => models.sequelize.query(
-      'select * from qms_procedures as q join reviewers as r on r.qms_procedure_id = q.id where r.user_id = ?',
-      {
-        replacements: [user.id],
-        model: models.QMSProcedure,
-        raw: true,
-      },
-    ),
+    trainingRecords: ({ id }, args, { models }) => models.TrainingRecord.findAll({ order: [['created_at', 'DESC']], where: { trainee_id: id } }),
+    trainingRequirements: ({ id }, args, { models }) => models.TrainingRequirement.findAll({ order: [['created_at', 'DESC']], where: { user_id: id } }),
+    author: ({ id }, args, { models }) => models.Author.findAll({ where: { user_id: id } }),
+    trainer: ({ id }, args, { models }) => models.Trainer.findAll({ where: { user_id: id } }),
+    reviewer: ({ id }, args, { models }) => models.Reviewer.findAll({ where: { user_id: id } }),
   },
   Query: {
-    allUsers: (parent, args, { models }) => models.User.findAll(),
+    allUsers: (parent, args, { models }) => models.User.findAll({ order: [['username', 'ASC']] }),
+    user: (parent, { id }, { models }) => models.User.findOne({ where: { id } }),
   },
   Mutation: {
     addUser: async (parent, args, { models }) => {

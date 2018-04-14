@@ -15,8 +15,9 @@ export default (sequelize, DataTypes) => {
       revision: {
         type: DataTypes.STRING,
       },
-      effective_date: {
+      effectiveDate: {
         type: DataTypes.DATE,
+        field: 'effective_date',
       },
       obsolete: {
         type: DataTypes.BOOLEAN,
@@ -28,6 +29,7 @@ export default (sequelize, DataTypes) => {
   QMSProcedure.associate = (models) => {
     QMSProcedure.belongsToMany(models.User, {
       through: models.Trainer,
+      unique: false,
       foreignKey: {
         name: 'QMSProcedureId',
         field: 'qms_procedure_id',
@@ -35,6 +37,7 @@ export default (sequelize, DataTypes) => {
     });
     QMSProcedure.belongsToMany(models.User, {
       through: models.Author,
+      unique: false,
       foreignKey: {
         name: 'QMSProcedureId',
         field: 'qms_procedure_id',
@@ -42,6 +45,7 @@ export default (sequelize, DataTypes) => {
     });
     QMSProcedure.belongsToMany(models.User, {
       through: models.Reviewer,
+      unique: false,
       foreignKey: {
         name: 'QMSProcedureId',
         field: 'qms_procedure_id',
@@ -49,6 +53,7 @@ export default (sequelize, DataTypes) => {
     });
     QMSProcedure.belongsToMany(models.User, {
       through: models.TrainingRequirement,
+      unique: false,
       foreignKey: {
         name: 'QMSProcedureId',
         field: 'qms_procedure_id',
@@ -56,6 +61,7 @@ export default (sequelize, DataTypes) => {
     });
     QMSProcedure.belongsToMany(models.User, {
       through: models.TrainingRecord,
+      unique: false,
       foreignKey: {
         name: 'QMSProcedureId',
         field: 'qms_procedure_id',

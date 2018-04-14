@@ -8,13 +8,14 @@ type User {
     active: Boolean!
     trainingRecords: [TrainingRecord!]!
     trainingRequirements: [TrainingRequirement!]!
-    author: [QMSProcedure!]!
-    trainer: [QMSProcedure!]!
-    reviewer: [QMSProcedure!]!
+    author: [Author!]!
+    trainer: [Trainer!]!
+    reviewer: [Reviewer!]!
 }
 
 type Query {
     allUsers: [User!]!
+    user (userId: String!): User!
 }
 
 type Mutation {

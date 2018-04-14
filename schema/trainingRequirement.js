@@ -7,7 +7,9 @@ type TrainingRequirement {
 }
 
 type Query {
-    getTrainingRequirements (userId: String!): [TrainingRequirement!]!
+    getTrainingRequirementsByUser (userId: String!): [TrainingRequirement!]!
+    getTrainingRequirementsById (id: String!): TrainingRequirement!
+    getTrainingRequirementsByQMS (QMSProcedureId: String!): [TrainingRequirement!]!
 }
 
 `;

@@ -3,33 +3,14 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   QMSProcedure: {
-    trainer: ({ id }, args, { models }) => models.sequelize.query(
-      'select * from users as u join trainers as t on t.user_id = u.id where t.qms_procedure_id = ?',
-      {
-        replacements: [id],
-        model: models.User,
-        raw: true,
-      },
-    ),
-    author: ({ id }, args, { models }) => models.sequelize.query(
-      'select * from users as u join authors as a on a.user_id = u.id where a.qms_procedure_id = ?',
-      {
-        replacements: [id],
-        model: models.User,
-        raw: true,
-      },
-    ),
-    reviewer: ({ id }, args, { models }) => models.sequelize.query(
-      'select * from users as u join reviewers as r on r.user_id = u.id where r.qms_procedure_id = ?',
-      {
-        replacements: [id],
-        model: models.User,
-        raw: true,
-      },
-    ),
+    trainer: ({ id }, args, { models }) => models.Trainer.findAll({ order: [['username', 'ASC']], where: { qms_procedure_id: id } }),
+    author: ({ id }, args, { models }) => models.Author.findAll({ order: [['username', 'ASC']], where: { qms_procedure_id: id } }),
+    reviewer: ({ id }, args, { models }) => models.Reviewer.findAll({ order: [['username', 'ASC']], where: { qms_procedure_id: id } }),
+    trainingRecords: ({ id }, args, { models }) => models.TrainingRecord.findAll({ order: [['created_at', 'DESC']], where: { qms_procedure_id: id } }),
+    trainingRequirements: ({ id }, args, { models }) => models.TrainingRequirements.findAll({ order: [['created_at', 'DESC']], where: { qms_procedure_id: id } }),
   },
   Query: {
-    allQMSProcedures: (parent, args, { models }) => models.QMSProcedure.findAll(),
+    allQMSProcedures: (parent, args, { models }) => models.QMSProcedure.findAll({ order: [['number', 'ASC']] }),
   },
   Mutation: {
     addQMSProcedure: async (parent, args, { models }) => {
