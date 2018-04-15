@@ -11,6 +11,7 @@ export default {
   },
   Query: {
     allQMSProcedures: (parent, args, { models }) => models.QMSProcedure.findAll({ order: [['number', 'ASC']] }),
+    procedure: (parent, { QMSProcedureId }, { models }) => models.QMSProcedure.findOne({ where: { id: QMSProcedureId } }),
   },
   Mutation: {
     addQMSProcedure: async (parent, args, { models }) => {

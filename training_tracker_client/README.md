@@ -8,6 +8,6 @@ eslint --init
 
 install-peerdeps --dev eslint-config-airbnb
 
-npm i --save semantic-ui-react semantic-ui-css react-router-dom
+npm i --save semantic-ui-react semantic-ui-css react-router-dom styled-components
 
 npm i --save apollo-client apollo-link-http apollo-cache-inmemory

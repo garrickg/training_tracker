@@ -8,7 +8,15 @@ export default {
     trainee: ({ traineeId }, args, { models }) => models.User.findOne({ where: { id: traineeId } }),
   },
   Query: {
-    getTrainingRecordsByUser: (parent, { userId }, { models }) => models.TrainingRecord.findAll({ where: { user_id: userId } }),
+    getTrainingRecordsByUser: (parent, { userId }, { models }) => models.TrainingRecord.findAll({ where: { trainee_id: userId } }),
+    // getTrainingRecordsByUser: (parent, { userId }, { models }) => models.sequelize.query(
+    //   'select * from training_records where trainee_id = ?',
+    //   {
+    //     replacements: [userId],
+    //     model: models.TrainingRecord,
+    //     raw: true,
+    //   },
+    // ),
     getTrainingRecordsById: (parent, { id }, { models }) => models.TrainingRecord.findOne({ where: { id } }),
     getTrainingRecordsByQMS: (parent, { QMSProcedureId }, { models }) => models.TrainingRecord.findAll({ where: { qms_procedure_id: QMSProcedureId } }),
   },

@@ -3,8 +3,8 @@ import formatErrors from '../shared/formatErrors';
 
 export default {
   User: {
-    trainingRecords: ({ id }, args, { models }) => models.TrainingRecord.findAll({ order: [['created_at', 'DESC']], where: { trainee_id: id } }),
-    trainingRequirements: ({ id }, args, { models }) => models.TrainingRequirement.findAll({ order: [['created_at', 'DESC']], where: { user_id: id } }),
+    trainingRecords: ({ id }, args, { models }) => models.TrainingRecord.findAll({ where: { trainee_id: id } }),
+    trainingRequirements: ({ id }, args, { models }) => models.TrainingRequirement.findAll({ where: { user_id: id } }),
     author: ({ id }, args, { models }) => models.Author.findAll({ where: { user_id: id } }),
     trainer: ({ id }, args, { models }) => models.Trainer.findAll({ where: { user_id: id } }),
     reviewer: ({ id }, args, { models }) => models.Reviewer.findAll({ where: { user_id: id } }),

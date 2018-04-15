@@ -16,6 +16,7 @@ type QMSProcedure {
 
 type Query {
     allQMSProcedures: [QMSProcedure!]!
+    procedure (QMSProcedureId: String!): QMSProcedure!
 }
 
 type Mutation {
