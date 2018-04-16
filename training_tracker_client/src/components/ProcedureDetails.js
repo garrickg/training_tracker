@@ -35,8 +35,13 @@ const ProcedureDetails = ({ QMSProcedureId }) => (
     {({ loading, error, data }) => {
       if (loading) return null;
       if (error) return `Error!: ${error}`;
+
       const { procedure, getTrainingRecordsByQMS: records } = data;
-      console.log(records);
+
+      // eslint-disable-next-line prefer-const
+      let allRecords = [...records];
+      allRecords.sort((a, b) => (a.trainee.username > b.trainee.username ? 1 : -1));
+
       return (
         <React.Fragment>
           <Header as="h3" dividing>

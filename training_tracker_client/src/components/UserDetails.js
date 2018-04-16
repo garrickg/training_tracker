@@ -30,14 +30,20 @@ const UserDetails = ({ userId }) => (
     {({ loading, error, data }) => {
       if (loading) return null;
       if (error) return `Error!: ${error}`;
+
       const { user, getTrainingRecordsByUser: records } = data;
+
+      // eslint-disable-next-line prefer-const
+      let allRecords = [...records];
+      allRecords.sort((a, b) => (a.QMSProcedure.number > b.QMSProcedure.number ? 1 : -1));
+
       return (
         <React.Fragment>
           <Header as="h3" dividing>
             {user.username}
           </Header>
           <Card.Group>
-            {records
+            {allRecords
                 .map(record => (
                   <Card key={record.id}>
                     <Card.Content>
