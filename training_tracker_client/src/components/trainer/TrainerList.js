@@ -3,19 +3,18 @@ import gql from 'graphql-tag';
 import { graphql, Query } from 'react-apollo';
 import { Dropdown } from 'semantic-ui-react';
 
-const allProceduresQuery = gql`
+const allQMSProceduresQuery = gql`
   {
     allQMSProcedures {
       name
       number
-      revision
       id
     }
   }
 `;
 
-const ProcedureList = ({ onProcedureSelected }) => (
-  <Query query={allProceduresQuery}>
+const TrainerList = ({ onProcedureSelected }) => (
+  <Query query={allQMSProceduresQuery}>
     {({ loading, error, data }) => {
       if (loading) return 'Loading...';
       if (error) return `Error! ${error.message}`;
@@ -35,4 +34,4 @@ const ProcedureList = ({ onProcedureSelected }) => (
   </Query>
 );
 
-export default graphql(allProceduresQuery)(ProcedureList);
+export default graphql(allQMSProceduresQuery)(TrainerList);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Menu } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import UserDetails from './UserDetails';
@@ -20,11 +20,18 @@ class Users extends Component {
       });
     }
 
+    handleItemClick = (e, { name }) => this.props.history.push(`/${name}s`);
+
     render() {
       const { selectedUser } = this.state;
 
       return (
         <React.Fragment>
+          <Menu pointing secondary>
+            <Menu.Item name="user" active="true" onClick={this.handleItemClick} />
+            <Menu.Item name="procedure" onClick={this.handleItemClick} />
+            <Menu.Item name="trainer" onClick={this.handleItemClick} />
+          </Menu>
           <Wrapper>
             <Header as="h1">Training Records by User</Header>
           </Wrapper>
